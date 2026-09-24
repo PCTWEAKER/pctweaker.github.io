@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pctwweaker.github.io/sitemap.xml
