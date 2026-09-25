@@ -65,7 +65,16 @@
 
 <section class="dark-band" id="network">
   <div class="network-wrap">
-    <div><label>03 · NETWORK OPTIMIZATION</label><h2>Low ping is useful.<br><em>Stable ping is better.</em></h2><p>Connection quality is more than the number beside “ping”. Check jitter, packet loss, server region and local congestion.</p><div class="network-points"><span>✓ Ethernet when possible</span><span>✓ Correct game region</span><span>✓ No heavy uploads</span><span>✓ Check packet loss</span></div><p style="margin-top:14px"><b>Optional routing tools:</b> Services such as ExitLag and NoPing can be tested if you suspect a routing problem. Compare your normal route against the alternative and keep whichever gives you a measurable, stable result. These services are third-party products and are not required for basic troubleshooting.</p></div>
+    <div><label>03 · NETWORK OPTIMIZATION</label><h2>Low ping is useful.<br><em>Stable ping is better.</em></h2><p>Connection quality is more than the number beside “ping”. Check jitter, packet loss, server region and local congestion.</p><div class="network-points"><span>✓ Ethernet when possible</span><span>✓ Correct game region</span><span>✓ No heavy uploads</span><span>✓ Check packet loss</span></div><div class="network-tools" style="margin-top:22px">
+  <b style="display:block;margin-bottom:10px">CHECK YOUR ROUTE & CONNECTION</b>
+  <div style="display:flex;flex-wrap:wrap;gap:10px">
+    <a class="driver-row" style="display:inline-flex" href="https://speed.cloudflare.com/" target="_blank" rel="noopener">Cloudflare Speed Test ↗</a>
+    <a class="driver-row" style="display:inline-flex" href="https://www.speedtest.net/" target="_blank" rel="noopener">Speedtest ↗</a>
+    <a class="driver-row" style="display:inline-flex" href="https://packetlosstest.com/" target="_blank" rel="noopener">Packet Loss Test ↗</a>
+    <a class="driver-row" style="display:inline-flex" href="https://www.exitlag.com/" target="_blank" rel="noopener">ExitLag ↗</a>
+  </div>
+  <p style="margin-top:12px">Use the speed tests to check latency, jitter and packet loss first. If your connection looks healthy but the route to a particular game server is poor, a routing optimizer such as ExitLag can be tested. Compare the same game server with and without it—do not assume a routing service will lower ping on every ISP or server.</p>
+</div></div>
     <div class="network-art"><div class="network-placeholder"><span>NETWORK TEST</span><b>Ping · Jitter · Loss</b><i>Measure your own connection</i></div><div class="network-number"><small>EXAMPLE TEST</small><b>— <i>ms</i></b><span>Measure your own packet loss and jitter</span></div></div>
   </div>
 </section>
