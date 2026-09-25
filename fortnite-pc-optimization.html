@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Fortnite PC optimization guide for FPS, stutters and input latency. Practical Windows and in-game settings with a repeatable testing method.">
+<title>Fortnite PC Optimization: FPS, Stutters & Input Latency — PCTweaker</title>
+<link rel="stylesheet" href="styles.css">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4333346244183221" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="topbar">
+<a class="logo" href="index.html"><i>P</i><b>PCT<span>weaker</span></b></a>
+<nav><a href="index.html#windows">Windows</a><a href="index.html#performance">FPS</a><a href="index.html#network">Network</a><a href="index.html#guides">Guides</a></nav>
+<a class="top-cta" href="index.html">Home ↗</a>
+</header>
+<main class="section article-page">
+<label>FORTNITE · PERFORMANCE GUIDE</label>
+<h1>Fortnite PC Optimization: FPS, Stutters & Input Latency</h1>
+<p class="hero-lead">A practical Fortnite checklist focused on measurable changes. Start with the game's own settings and Windows' supported options before touching advanced configuration.</p>
+<p class="hero-lead" style="font-size:12px;margin-top:12px">Last reviewed: September 2026 · PCTweaker Editorial</p>
+
+<div class="notice"><strong>Important:</strong> There is no universal Fortnite configuration. Hardware, drivers, monitor refresh rate and game updates change the result. Change one variable at a time and keep notes so you can undo anything that makes performance worse.</div>
+
+<h2>1. Check the basics first</h2>
+<p>Before optimizing, confirm Fortnite is running on the intended GPU, your monitor is using its intended refresh rate, and your PC is not overheating. If the problem appeared suddenly, also check whether Fortnite or your graphics driver recently changed.</p>
+
+<h2>2. Choose a rendering mode deliberately</h2>
+<p>For systems where maximum frame rate and low overhead are the priority, Fortnite's <strong>Performance</strong> rendering mode is a useful starting point. Epic describes it as a mode intended to reduce memory usage and lighten CPU/GPU load. It is not a guaranteed FPS increase for every PC.</p>
+<p>Open Fortnite → Settings → Video → Rendering Mode and select <strong>Performance</strong>, then restart the game. Epic also documents removing high-resolution textures through Epic Games Launcher → Library → Fortnite → Options when you want a smaller installation.</p>
+<p><a class="text-link" href="https://www.epicgames.com/help/c-34254770/c-38015632/a25544495" target="_blank" rel="noopener">Epic's current low-FPS troubleshooting guide ↗</a></p>
+
+<h2>3. Start with a clean competitive settings baseline</h2>
+<ul>
+<li><strong>V-Sync:</strong> Off when your goal is to avoid the frame-rate limit imposed by V-Sync.</li>
+<li><strong>Frame Rate Limit:</strong> Choose a limit that makes sense for your monitor and system. Unlimited is useful for testing raw performance; a sensible cap can produce more consistent frame pacing on some systems.</li>
+<li><strong>3D Resolution:</strong> Start at 100% if your hardware can maintain the target; reduce it gradually if GPU load is the limiting factor.</li>
+<li><strong>View Distance:</strong> Choose based on visibility needs rather than assuming the lowest value is always best.</li>
+<li><strong>Textures and Meshes:</strong> Lower these when GPU memory or rendering load is limiting performance.</li>
+<li><strong>Ray tracing and expensive visual effects:</strong> Disable them when the objective is maximum performance.</li>
+</ul>
+<p>Epic's current competitive-settings guide recommends Performance rendering, V-Sync off, and using the in-game FPS display to compare changes. Exact settings remain hardware-dependent. citeturn0search3</p>
+
+<h2>4. Set Fortnite to the high-performance GPU</h2>
+<p>On a PC with multiple GPUs, Windows can assign a specific application to the high-performance GPU. Go to <strong>Settings → System → Display → Graphics</strong>, add <strong>FortniteClient-Win64-Shipping.exe</strong>, select Options, choose <strong>High performance</strong>, and save.</p>
+<p>Epic also lists Hardware-accelerated GPU scheduling as an available Windows setting in its current low-FPS troubleshooting steps. Availability depends on the system and Windows configuration. citeturn0search1</p>
+
+<h2>5. Use Windows Game Mode and control background activity</h2>
+<p>Windows Game Mode can be enabled under <strong>Settings → Gaming → Game Mode</strong>. Also check background applications, overlays and downloads while troubleshooting. Epic currently recommends enabling Game Mode and disabling Xbox Game Bar when diagnosing low FPS. citeturn0search1</p>
+<p>Do not blindly disable Windows services. If a background process is suspected, close or disable one item, reproduce the same test, and compare the result.</p>
+
+<h2>6. Use Windows' windowed-game optimization where appropriate</h2>
+<p>Windows 11 includes <strong>Optimizations for windowed games</strong> for compatible DirectX 10 and DirectX 11 games running in windowed or borderless modes. Microsoft says the feature uses the newer flip-model presentation path and can reduce frame latency on supported configurations.</p>
+<p>Find it under <strong>Settings → System → Display → Graphics</strong>. This is not a reason to change display modes blindly; test it against the mode you actually use.</p>
+<p><a class="text-link" href="https://support.microsoft.com/en-us/windows/optimizations-for-windowed-games-in-windows-11-0f5e1e4d-0f1e-4a09-9c6f-0e6b1f7e3f2a" target="_blank" rel="noopener">Microsoft's Windows 11 documentation ↗</a></p>
+
+<h2>7. Check drivers before advanced tweaks</h2>
+<p>Use the official NVIDIA or AMD driver for your GPU. Record the current driver version before changing it. If Fortnite becomes less stable after an update, test a previously working driver instead of stacking additional tweaks on top.</p>
+<p>For NVIDIA systems that support it, NVIDIA documents Reflex as a Fortnite feature designed to reduce system latency. Its availability and behavior depend on the GPU and game configuration. citeturn0search15</p>
+
+<h2>8. Diagnose stutters instead of assuming you need more FPS</h2>
+<p>Enable Fortnite's FPS display and monitor frametime where possible. During a repeatable test, record:</p>
+<ul>
+<li>Average FPS</li>
+<li>1% lows or another consistent low-FPS metric</li>
+<li>Frametime spikes</li>
+<li>GPU utilization and temperature</li>
+<li>CPU utilization, clocks and temperature</li>
+<li>RAM/VRAM usage where available</li>
+</ul>
+<p>If GPU utilization is high and stable, investigate GPU settings, resolution and thermals. If GPU utilization drops during the stutter, investigate CPU limits, background work, memory, storage, shader behavior or game-engine behavior.</p>
+
+<h2>9. A simple before/after test that actually tells you something</h2>
+<p>Use the same game mode, map or repeatable section. Restart Fortnite when a setting requires it. Run the test multiple times and record the median or a consistent representative result. Change <strong>one thing</strong>, then repeat.</p>
+<div class="notice"><strong>Example:</strong> Baseline → Performance Mode → test → record FPS/frametime → revert if worse → test the next variable. This is much more useful than applying ten registry tweaks and not knowing which one changed the result.</div>
+
+<h2>10. What not to do</h2>
+<ul>
+<li>Do not download unknown “FPS booster” executables.</li>
+<li>Do not use registry packs without understanding every change.</li>
+<li>Do not disable security features simply because a tweak list claims they cost FPS.</li>
+<li>Do not claim a tweak works universally because it helped one PC.</li>
+<li>Do not use fake benchmark numbers to judge a configuration.</li>
+</ul>
+
+<h2>Quick checklist</h2>
+<ul>
+<li>☐ Correct GPU selected</li>
+<li>☐ Monitor refresh rate verified</li>
+<li>☐ Fortnite rendering mode tested</li>
+<li>☐ V-Sync/frame cap deliberately configured</li>
+<li>☐ Game Mode checked</li>
+<li>☐ Background downloads and overlays checked</li>
+<li>☐ Drivers recorded and tested systematically</li>
+<li>☐ Temperatures and clocks checked</li>
+<li>☐ FPS/frametime measured before and after changes</li>
+<li>☐ One variable changed at a time</li>
+</ul>
+
+<p class="hero-lead" style="font-size:12px;margin-top:40px">Sources: Epic Games Fortnite Support and Epic Games Store guidance; Microsoft Support; NVIDIA documentation. Settings and available features can change with game and Windows updates.</p>
+<p class="back"><a class="text-link" href="index.html">← Back to PCTweaker</a></p>
+</main>
+<footer><div class="footer-nav"><a href="index.html">Home</a><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="cookie-policy.html">Cookies</a><a href="terms.html">Terms</a><a href="disclaimer.html">Disclaimer</a><a href="contact.html">Contact</a></div><small>© 2026 PCTweaker · Independent PC gaming optimization resource</small></footer>
+</body>
+</html>
