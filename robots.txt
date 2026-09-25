@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://pctwweaker.github.io/sitemap.xml
+Sitemap: https://pctweaker.github.io/sitemap.xml
