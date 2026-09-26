@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="PCTweaker PC Scanner — scan your browser, display and hardware environment and get a personalized gaming optimization checklist.">
+<title>PCTweaker PC Scanner — Free Gaming Setup Scan</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+.scanner-page{max-width:1180px;margin:auto;padding:70px 22px 100px}.scanner-hero{text-align:center;padding:30px 0 45px}.scanner-hero label,.scanner-card label{letter-spacing:.14em;font-size:12px;font-weight:800;opacity:.7}.scanner-hero h1{font-size:clamp(42px,7vw,78px);line-height:.95;margin:15px 0}.scanner-hero h1 em{font-style:normal;color:#62f6c5}.scanner-hero p{max-width:700px;margin:0 auto;color:#aab3c3;font-size:18px;line-height:1.6}.scan-button{margin-top:28px;border:0;cursor:pointer;padding:18px 30px;border-radius:12px;font-weight:900;font-size:16px;background:#62f6c5;color:#07100d;box-shadow:0 0 35px #62f6c533}.scan-note{display:block;margin-top:12px;color:#7f899b;font-size:12px}.scanner-card{background:#101622;border:1px solid #263143;border-radius:22px;padding:25px;margin-top:24px}.scanner-card h2{margin:6px 0 20px}.scanner-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.metric{background:#0b111b;border:1px solid #202b3b;border-radius:15px;padding:18px}.metric b{display:block;font-size:24px;margin:5px 0}.metric span{color:#8e99aa;font-size:13px}.metric.good b{color:#62f6c5}.metric.warn b{color:#ffd166}.metric.info b{color:#8db7ff}.recommendations{display:grid;gap:12px}.rec{display:flex;gap:16px;align-items:flex-start;background:#0b111b;border:1px solid #202b3b;border-radius:15px;padding:17px}.rec-num{min-width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:#62f6c51a;color:#62f6c5;font-weight:900}.rec h3{margin:0 0 5px}.rec p{margin:0;color:#9da7b7;line-height:1.5}.fingerprint{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:#080d14;border-radius:16px;padding:20px;white-space:pre-wrap;color:#cbd5e1;border:1px solid #202b3b}.privacy{font-size:13px;color:#778296;line-height:1.6;margin-top:18px}@media(max-width:760px){.scanner-grid{grid-template-columns:1fr}.scanner-page{padding-top:35px}.scanner-card{padding:18px}}
+</style>
+</head>
+<body>
+<header class="topbar">
+<a class="logo" href="index.html"><i>F</i><b>PCT<span>weaker</span></b></a>
+<nav><a href="index.html#windows">Windows</a><a href="index.html#performance">FPS & Performance</a><a href="index.html#network">Ping</a><a href="index.html#games">Games</a><a href="index.html#guides">Guides</a></nav>
+<a class="top-cta" href="index.html">PCTweaker <b>↗</b></a>
+</header>
+<main class="scanner-page">
+<section class="scanner-hero">
+<label>PC TOOLS · 01</label>
+<h1>Scan your PC.<br><em>Find what to check.</em></h1>
+<p>PCTweaker reads information your browser can safely expose about your device, display and graphics environment, then turns it into a practical gaming checklist.</p>
+<button class="scan-button" id="scanBtn">SCAN MY PC →</button>
+<span class="scan-note">No download · No account · No system changes</span>
+</section>
+<section class="scanner-card" id="results" hidden>
+<label>YOUR PCTWEAKER PROFILE</label>
+<h2>System overview</h2>
+<div class="scanner-grid" id="metrics"></div>
+</section>
+<section class="scanner-card" id="checks" hidden>
+<label>PERSONALIZED CHECKLIST</label>
+<h2>What to check next</h2>
+<div class="recommendations" id="recommendations"></div>
+<p class="privacy">This first version is browser-based. It does not claim to know information the browser cannot expose, and it does not change Windows settings. Recommendations are based only on the information shown above.</p>
+</section>
+<section class="scanner-card" id="fingerprintCard" hidden>
+<label>SHAREABLE PROFILE</label>
+<h2>PC Fingerprint</h2>
+<div class="fingerprint" id="fingerprint"></div>
+</section>
+</main>
+<script>
+const $=s=>document.querySelector(s);
+function gpuInfo(){
+ try{
+  const c=document.createElement('canvas'), gl=c.getContext('webgl')||c.getContext('experimental-webgl');
+  if(!gl)return 'Not available';
+  const ext=gl.getExtension('WEBGL_debug_renderer_info');
+  return ext ? gl.getParameter(ext.UNMASKED_RENDERER_WEBGL) : gl.getParameter(gl.RENDERER);
+ }catch(e){return 'Not available'}
+}
+function esc(v){return String(v).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+function scan(){
+ const ua=navigator.userAgent;
+ const cores=navigator.hardwareConcurrency||'Unknown';
+ const memory=navigator.deviceMemory?navigator.deviceMemory+' GB':'Not exposed';
+ const gpu=gpuInfo();
+ const screenText=screen.width+'×'+screen.height;
+ const dpr=window.devicePixelRatio||1;
+ const refresh=screen.orientation ? (window.matchMedia('(min-width: 1px)').matches ? 'Check display settings' : 'Unknown') : 'Check display settings';
+ const mobile=/Android|iPhone|iPad|Mobile/i.test(ua);
+ const windows=/Windows/i.test(ua);
+ const browser=(()=>{if(/Edg/i.test(ua))return'Edge';if(/Chrome/i.test(ua))return'Chrome';if(/Firefox/i.test(ua))return'Firefox';if(/Safari/i.test(ua))return'Safari';return'Browser'})();
+ const metrics=[
+  ['Platform',windows?'Windows':mobile?'Mobile / tablet':'Desktop / other','info'],
+  ['CPU threads',cores,'good'],
+  ['Memory exposed',memory,memory==='Not exposed'?'info':'good'],
+  ['Graphics',gpu.length>70?gpu.slice(0,67)+'…':gpu,'info'],
+  ['Display',screenText+' · DPR '+dpr,'info'],
+  ['Browser',browser,'good']
+ ];
+ $('#metrics').innerHTML=metrics.map(x=>'<div class="metric '+x[2]+'"><span>'+esc(x[0])+'</span><b>'+esc(x[1])+'</b></div>').join('');
+ const rec=[];
+ if(windows) rec.push(['01','Verify your refresh rate','Open Windows Display → Advanced display and confirm the monitor is running at the refresh rate you actually intend to use.']);
+ rec.push(['02','Measure before tweaking','Use the same game, scene and settings for a baseline. Record average FPS, 1% lows and frametime behavior before changing anything.']);
+ if(/Not available|Software|WebKit/i.test(gpu)) rec.push(['03','Check the GPU driver','Confirm your NVIDIA or AMD driver directly from the manufacturer before using third-party “FPS booster” tools.']);
+ else rec.push(['03','Check GPU load and temperatures','Use a trusted hardware monitor while gaming. High GPU load can be normal; look for thermal or clock problems when performance is inconsistent.']);
+ rec.push(['04','Test the network separately','For online games, measure ping, jitter and packet loss independently from FPS. A stable connection and a stable frame time are different problems.']);
+ rec.push(['05','Change one thing at a time','Keep a simple before/after record. If a tweak does not produce a measurable improvement, revert it.']);
+ $('#recommendations').innerHTML=rec.map(x=>'<div class="rec"><div class="rec-num">'+x[0]+'</div><div><h3>'+esc(x[1])+'</h3><p>'+esc(x[2])+'</p></div></div>').join('');
+ const fp='PCTWEAKER PC FINGERPRINT\n\n'+(windows?'Windows':'Other platform')+'\n'+cores+' CPU threads · '+memory+' memory exposed\n'+screenText+' display · '+browser+'\nGPU: '+gpu+'\n\nGenerated locally in your browser.';
+ $('#fingerprint').textContent=fp;
+ $('#results').hidden=false; $('#checks').hidden=false; $('#fingerprintCard').hidden=false;
+ $('#scanBtn').textContent='SCAN AGAIN →';
+}
+$('#scanBtn').addEventListener('click',scan);
+</script>
+</body></html>
