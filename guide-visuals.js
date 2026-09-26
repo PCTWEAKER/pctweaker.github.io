@@ -38,6 +38,15 @@ function pick(text){
   for(const [key,file,type,caption] of map){if(t.includes(key)) return {file,type,caption};}
   return null;
 }
+function pickSection(text){
+  const t=text.toLowerCase();
+  const sectionKeys=["refresh","game mode","graphics","startup","temperature","ram","driver","frametime","stutter","fps","latency","input","mouse","ping","jitter","packet loss","network","route","atlas","iso","playbook","timerresolution","vanguard","rendering","competitive","shader"];
+  for(const key of sectionKeys){
+    const hit=map.find(x=>x[0]===key);
+    if(hit && t.includes(key)) return {file:hit[1],type:hit[2],caption:hit[3]};
+  }
+  return null;
+}
 function addVisual(target, data, hero){
   if(!data || (target.nextElementSibling && target.nextElementSibling.classList.contains('guide-visual'))) return;
   const fig=document.createElement('figure');
@@ -60,7 +69,7 @@ if(title && lead){
   if(data) addVisual(lead,data,true);
 }
 main.querySelectorAll('h2').forEach(h=>{
-  const data=pick(h.textContent+' '+title?.textContent+' '+location.pathname);
+  const data=pickSection(h.textContent) || pick((title?.textContent||'')+' '+location.pathname);
   if(data) addVisual(h,data,false);
 });
 })();
