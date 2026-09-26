@@ -39,7 +39,7 @@ function pick(text){
   return null;
 }
 function addVisual(target, data, hero){
-  if(!data || target.parentElement.querySelector(':scope > .guide-visual')) return;
+  if(!data || (target.nextElementSibling && target.nextElementSibling.classList.contains('guide-visual'))) return;
   const fig=document.createElement('figure');
   fig.className='guide-visual'+(hero?' guide-hero':'');
   const img=document.createElement('img');
