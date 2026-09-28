@@ -26,9 +26,20 @@
     <div class="hero-stats"><div><b>FREE</b><span>Practical guides</span></div><div><b>TEST</b><span>Before & after</span></div><div><b>SAFE</b><span>Reversible first</span></div></div>
   </div>
   <div class="hero-art">
-    <img src="assets/frameforge-dashboard.svg" alt="PCTweaker gaming performance dashboard">
-    <div class="hero-badge one"><small>METHOD</small><b>TEST</b><span>one change at a time</span></div>
-    <div class="hero-badge two"><small>FOCUS</small><b>PC</b><span>Windows + games</span></div>
+    <div class="method-panel">
+      <div class="method-top"><span>PCTWEAKER METHOD</span><b>NO MAGIC TWEAKS</b></div>
+      <div class="method-main">
+        <div class="method-orbit"><strong>PC</strong><span>MEASURE</span></div>
+        <div class="method-steps">
+          <div><b>01</b><span>Baseline</span><small>Record FPS, frametime, temps & network conditions.</small></div>
+          <div><b>02</b><span>Diagnose</span><small>Find the bottleneck before changing settings.</small></div>
+          <div><b>03</b><span>Test</span><small>Change one variable and repeat the same workload.</small></div>
+        </div>
+      </div>
+      <div class="method-proof"><span>✓ ORIGINAL GUIDES</span><span>✓ OFFICIAL SOURCES</span><span>✓ REVERSIBLE FIRST</span></div>
+    </div>
+    <div class="hero-badge one"><small>WORKFLOW</small><b>1 → 1</b><span>one variable at a time</span></div>
+    <div class="hero-badge two"><small>FOCUS</small><b>DATA</b><span>measure before keeping a tweak</span></div>
   </div>
 </section>
 
@@ -64,10 +75,41 @@
   </div>
 </section>
 
+<section class="section guide-finder" id="finder">
+  <div class="section-heading centered">
+    <label>FAST PATH · 01</label>
+    <h2>Tell us the problem.<br><em>We'll point you to the right guide.</em></h2>
+    <p>No account. No download. Choose your game and symptom to jump directly to the relevant PCTweaker workflow.</p>
+  </div>
+  <div class="finder-card">
+    <div class="finder-fields">
+      <label>GAME</label>
+      <select id="finderGame">
+        <option value="fortnite">Fortnite</option><option value="valorant">VALORANT</option><option value="cs2">Counter-Strike 2</option><option value="warzone">Warzone</option><option value="windows">Windows / any game</option>
+      </select>
+      <label>PROBLEM</label>
+      <select id="finderProblem">
+        <option value="fps">Low FPS / GPU usage</option><option value="stutter">Stutters / bad 1% lows</option><option value="latency">Input delay</option><option value="ping">Ping / jitter / packet loss</option><option value="crash">Crashes / freezes</option>
+      </select>
+      <button id="finderGo" type="button">OPEN MY GUIDE <b>→</b></button>
+    </div>
+    <div class="finder-output" id="finderOutput"><span>READY</span><b>Pick two options above.</b><small>PCTweaker will send you to the most relevant starting point.</small></div>
+  </div>
+</section>
+
 <section class="section" id="windows">
   <div class="section-heading"><div><label>01 · WINDOWS OPTIMIZATION</label><h2>The foundation<br><em>starts here.</em></h2></div><p>Before changing advanced settings, get Windows, your display and your background apps under control.</p></div>
   <div class="windows-layout">
-    <div class="windows-art"><img src="assets/windows-panel.svg" alt="Windows gaming settings illustration"><div class="image-caption"><span class="dot"></span> SAFE BASELINE <b>READY</b></div></div>
+    <div class="windows-art">
+  <div class="source-card">
+    <div class="source-card-top"><span>REAL UI REFERENCE</span><b>MICROSOFT</b></div>
+    <h3>Windows 11 · Advanced display</h3>
+    <p>Use Microsoft's current interface and documentation for the exact setting instead of relying on a mock screenshot.</p>
+    <div class="source-path">Settings → System → Display → Advanced display</div>
+    <a href="https://support.microsoft.com/en-us/windows/hardware/display-graphics/change-the-refresh-rate-on-your-monitor-in-windows" target="_blank" rel="noopener">Open official Microsoft guide ↗</a>
+  </div>
+  <div class="image-caption"><span class="dot"></span> SOURCE-FIRST GUIDES <b>VERIFIED</b></div>
+</div>
     <div class="windows-list">
       <article><strong>01</strong><div><h3>Display & refresh rate</h3><p>Make sure Windows is actually using your monitor's intended refresh rate.</p></div><span>↗</span></article>
       <article><strong>02</strong><div><h3>Game Mode & Graphics</h3><p>Review Windows gaming features and per-game graphics preferences.</p></div><span>↗</span></article>
@@ -158,11 +200,37 @@
   </div>
 </section>
 
+<section class="section trust-section" id="method">
+  <div class="section-heading centered"><label>WHY PCTWEAKER</label><h2>Optimization without <em>fake screenshots or fake benchmarks.</em></h2><p>We separate official documentation, PCTweaker testing methods and community reports. If a setting is experimental or hardware-dependent, we say so.</p></div>
+  <div class="trust-grid">
+    <article><b>01</b><h3>Source it</h3><p>Official Microsoft, NVIDIA, AMD, Riot, Valve, Activision and Epic documentation comes first for current settings and troubleshooting steps.</p></article>
+    <article><b>02</b><h3>Measure it</h3><p>Use the same scene, resolution, cap and workload when comparing a change. Record the result instead of trusting a single FPS number.</p></article>
+    <article><b>03</b><h3>Revert it</h3><p>Advanced changes are optional. Back up first, change one variable, and keep the change only if the result is repeatable.</p></article>
+  </div>
+  <div class="faq-list">
+    <details><summary>Does PCTweaker guarantee more FPS?</summary><p>No. Performance depends on hardware, drivers, game updates, thermals and settings. The site focuses on diagnosis and repeatable testing rather than universal FPS promises.</p></details>
+    <details><summary>Are the screenshots on the guides real?</summary><p>PCTweaker is moving away from mock UI entirely. Where an exact interface matters, the guide points to the current official documentation so you can see the real UI instead of an invented screenshot.</p></details>
+    <details><summary>Should I apply every tweak?</summary><p>No. Start with the baseline and only test a deeper change when you have a specific reason. More tweaks do not automatically mean better performance.</p></details>
+  </div>
+</section>
+
 <section class="final-cta">
   <div><label>PCTWEAKER</label><h2>Your PC. Your settings.<br><em>Your benchmark.</em></h2><p>Start with the free Windows optimization guide and build from there.</p></div>
   <a class="start-box" href="windows-11-gaming-optimization.html"><strong>Start Free</strong><small>Open Windows optimization <b>→</b></small></a>
 </section>
 </main>
 
-<footer><div class="footer-logo"><i>F</i><b>PCTweaker</b><p>Independent PC gaming optimization resource.</p></div><div class="footer-nav"><a href="windows-11-gaming-optimization.html">Windows Guide</a><a href="atlasos-gaming-huide.html">AtlasOS Guide</a><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="cookie-policy.html">Cookies</a><a href="terms.html">Terms</a><a href="disclaimer.html">Disclaimer</a><a href="contact.html">Contact</a></div><small>© 2026 PCTweaker</small></footer>
-</body></html>
+<footer><div class="footer-logo"><i>PT</i><b>PCTweaker</b><p>Independent PC gaming optimization resource.</p></div><div class="footer-nav"><a href="windows-11-gaming-optimization.html">Windows Guide</a><a href="atlasos-gaming-huide.html">AtlasOS Guide</a><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="cookie-policy.html">Cookies</a><a href="terms.html">Terms</a><a href="disclaimer.html">Disclaimer</a><a href="contact.html">Contact</a></div><small>© 2026 PCTweaker</small></footer>
+<script>
+(function(){
+const routes={
+ fortnite:{fps:'fortnite-pc-optimization.html#2-choose-fortnites-rendering-mode',stutter:'fortnite-pc-optimization.html#9-diagnose-stutters-instead-of-assuming-you-need-more-fps',latency:'fortnite-pc-optimization.html#7-check-drivers-before-advanced-tweaks',ping:'article-ping-jitter.html',crash:'fortnite-pc-optimization.html#2-choose-fortnites-rendering-mode'},
+ valorant:{fps:'valorant-pc-optimization.html',stutter:'article-fps-stutters.html',latency:'article-input-latency.html',ping:'article-ping-jitter.html',crash:'valorant-pc-optimization.html'},
+ cs2:{fps:'cs2-pc-optimization.html',stutter:'article-fps-stutters.html',latency:'article-input-latency.html',ping:'article-ping-jitter.html',crash:'cs2-pc-optimization.html'},
+ warzone:{fps:'warzone-pc-optimization.html',stutter:'warzone-pc-optimization.html',latency:'article-input-latency.html',ping:'article-ping-jitter.html',crash:'warzone-pc-optimization.html'},
+ windows:{fps:'windows-11-gaming-optimization.html',stutter:'article-fps-stutters.html',latency:'article-input-latency.html',ping:'article-ping-jitter.html',crash:'windows-11-gaming-optimization.html'}
+};
+const game=document.getElementById('finderGame'), problem=document.getElementById('finderProblem'), go=document.getElementById('finderGo'), out=document.getElementById('finderOutput');
+if(go) go.onclick=function(){const url=routes[game.value][problem.value]||routes[game.value].fps; out.innerHTML='<span>START HERE</span><b>'+game.options[game.selectedIndex].text+' · '+problem.options[problem.selectedIndex].text+'</b><small>Opening the focused PCTweaker workflow…</small>';setTimeout(()=>location.href=url,220)};
+})();
+</script></body></html>
