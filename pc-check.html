@@ -46,10 +46,11 @@
 </div>
 <div class="actions">
 <button class="secondary" id="copy">COPY RESULT</button>
-<button class="secondary" id="share">SHARE</button>
+<button class="secondary" id="share">SHARE</button><button class="secondary" id="download">SAVE CARD</button>
 <button class="secondary" id="copyLink">COPY RESULT LINK</button>
 </div>
 <p class="hint">PCTweaker does not claim to measure FPS, latency, temperatures or installed RAM from the browser when those values are unavailable. Use the checklist to test them properly.</p>
+<canvas id="shareCanvas" width="1080" height="1350" hidden></canvas>
 </section>
 </main>
 <script>
@@ -95,10 +96,25 @@ function run(){
  },450);
 }
 function resultText(){return $('#cardTitle').textContent+'\n'+$('#cardLine').textContent+'\n\n'+location.href}
+function saveCard(){
+ const c=$('#shareCanvas'),x=c.getContext('2d'),d=getData(),arr=checksFor(d);
+ x.fillStyle='#080d14';x.fillRect(0,0,c.width,c.height);
+ x.fillStyle='#62f6c5';x.font='900 34px Arial';x.fillText('PCTWEAKER CHECK',70,90);
+ x.fillStyle='#eef3f8';x.font='900 64px Arial';x.fillText(d.g,70,180);x.fillText('PC CHECK',70,255);
+ x.fillStyle='#aab3c3';x.font='500 30px Arial';x.fillText(d.p,70,315);
+ x.strokeStyle='#263143';x.lineWidth=2;x.strokeRect(70,360,940,250);
+ const stats=[['GPU',d.gpu],['CPU',d.cores+' threads'],['REFRESH',d.hz==='manual'?'Unknown':d.hz+' Hz'],['MEMORY',d.mem]];
+ stats.forEach((v,i)=>{const xx=90+(i%2)*460,yy=420+Math.floor(i/2)*105;x.fillStyle='#7f899b';x.font='700 20px Arial';x.fillText(v[0],xx,yy);x.fillStyle='#eef3f8';x.font='800 26px Arial';x.fillText(String(v[1]).slice(0,30),xx,yy+34)});
+ x.fillStyle='#62f6c5';x.font='900 26px Arial';x.fillText(arr.length+' THINGS TO INVESTIGATE',70,700);
+ arr.slice(0,5).forEach((v,i)=>{const y=770+i*88;x.fillStyle='#111b28';x.fillRect(70,y,940,68);x.fillStyle='#62f6c5';x.font='900 20px Arial';x.fillText(v[0],92,y+43);x.fillStyle='#eef3f8';x.font='700 22px Arial';x.fillText(v[1].slice(0,54),145,y+43)});
+ x.fillStyle='#778296';x.font='500 20px Arial';x.fillText('Browser-based • No download • No Windows changes',70,1245);
+ x.fillStyle='#62f6c5';x.font='900 24px Arial';x.fillText('pctweaker.github.io/pc-check.html',70,1295);
+ c.toBlob(blob=>{const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='pctweaker-pc-check.png';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)},'image/png')
+}
 $('#scan').addEventListener('click',run);
 $('#copy').addEventListener('click',async()=>{await navigator.clipboard.writeText(resultText());$('#copy').textContent='COPIED ✓';setTimeout(()=>$('#copy').textContent='COPY RESULT',1500)});
 $('#copyLink').addEventListener('click',async()=>{await navigator.clipboard.writeText(location.href);$('#copyLink').textContent='LINK COPIED ✓';setTimeout(()=>$('#copyLink').textContent='COPY RESULT LINK',1500)});
-$('#share').addEventListener('click',async()=>{if(navigator.share)await navigator.share({title:'PCTweaker PC Check',text:resultText(),url:location.href});else{await navigator.clipboard.writeText(location.href);alert('Result link copied.')}});
+$('#share').addEventListener('click',async()=>{if(navigator.share)await navigator.share({title:'PCTweaker PC Check',text:resultText(),url:location.href});else{await navigator.clipboard.writeText(location.href);alert('Result link copied.')}});$('#download').addEventListener('click',saveCard);
 
 const q=new URLSearchParams(location.search);
 if(q.has('g')){$('#game').value=q.get('g')||'Fortnite';$('#hz').value=q.get('h')||'60';$('#problem').value=q.get('p')||'Not sure';run()}
