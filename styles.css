@@ -82,3 +82,13 @@
 .guide-finder{padding-top:45px}.finder-card{max-width:920px;margin:auto;border:1px solid #334253;border-radius:18px;background:linear-gradient(145deg,#0f171f,#0b1016);padding:24px;display:grid;grid-template-columns:1.2fr .8fr;gap:24px}.finder-fields{display:grid;grid-template-columns:1fr 1fr;gap:9px}.finder-fields label{grid-column:auto;font-size:8px}.finder-fields select{width:100%;background:#0a0f15;color:#e9eef4;border:1px solid #2b3845;border-radius:9px;padding:13px;font:inherit;font-size:11px}.finder-fields button{grid-column:1/-1;border:0;border-radius:9px;padding:14px;background:linear-gradient(90deg,var(--cyan),var(--purple));color:#071018;font-weight:950;letter-spacing:.6px;cursor:pointer}.finder-output{border:1px solid #283745;border-radius:12px;padding:20px;display:flex;flex-direction:column;justify-content:center;background:#0a1016}.finder-output span{font-size:8px;letter-spacing:1.5px;color:var(--cyan);font-weight:900}.finder-output b{font-size:18px;margin:8px 0}.finder-output small{font-size:10px;color:#758291}
 .trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.trust-grid article{padding:25px;border:1px solid #293845;border-radius:14px;background:#0d1319}.trust-grid b{color:var(--cyan);font-size:10px}.trust-grid h3{font-size:19px;margin:25px 0 7px}.trust-grid p{font-size:11px;color:#7f8a98}.faq-list{max-width:900px;margin:24px auto 0}.faq-list details{border-top:1px solid #27313c;padding:18px 0}.faq-list details:last-child{border-bottom:1px solid #27313c}.faq-list summary{cursor:pointer;font-weight:800;font-size:13px}.faq-list p{font-size:11px;color:#7f8a98;max-width:700px}
 @media(max-width:800px){.method-main,.finder-card{grid-template-columns:1fr}.method-orbit{margin:auto}.trust-grid{grid-template-columns:1fr}.finder-fields{grid-template-columns:1fr}.finder-fields label{grid-column:1}.finder-fields button{grid-column:1}}
+
+
+/* Real source screenshots */
+.real-shot{margin:24px 0 30px;border:1px solid rgba(120,170,190,.22);border-radius:16px;background:#0a1117;overflow:hidden;box-shadow:0 12px 35px rgba(0,0,0,.22)}
+.real-shot img{display:block;width:100%;height:auto;background:#fff}
+.real-shot figcaption{padding:11px 14px;color:#8f9da8;font-size:11px;line-height:1.55}
+.real-shot figcaption a{color:#69c8e8;text-decoration:none}
+.real-shot-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:24px 0 30px}
+.real-shot-grid .real-shot{margin:0}
+@media(max-width:760px){.real-shot-grid{grid-template-columns:1fr}}
